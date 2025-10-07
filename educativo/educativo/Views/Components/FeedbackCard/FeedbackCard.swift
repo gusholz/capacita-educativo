@@ -15,13 +15,13 @@ struct FeedbackCard: View {
         HStack {
             Text(text)
                 .font(.system(size: 14, weight: .bold))
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.backgroundPrimary)
             Spacer()
             Button {
                 dismissAction()
             } label: {
                 Image(systemName: "clear")
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.backgroundPrimary)
             }
         }
         .padding()
