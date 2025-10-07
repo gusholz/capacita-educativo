@@ -33,14 +33,14 @@ struct ContentCard: View {
                 
                 // TODO: Make this a button that receives the action
                 Image(systemName: "ellipsis")
-                    .foregroundStyle(Color.foregroundSecondary)
+                    .foregroundStyle(Color.divider)
             }
             .padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
         }
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.foregroundSecondary, lineWidth: 1)
+                .stroke(Color.divider, lineWidth: 1)
         )
 
     }
