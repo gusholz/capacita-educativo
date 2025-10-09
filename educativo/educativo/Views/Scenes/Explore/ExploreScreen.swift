@@ -18,19 +18,20 @@ struct Category: Identifiable {
 private var mockList: [Category] = [
     Category(title: "Work",
              sfImageName: "briefcase.fill",
-             foregroundColor: .white,
-             backgroundColor: .blue),
+             foregroundColor: .black,
+             backgroundColor: .red),
     Category(title: "Personal",
              sfImageName: "person.fill",
-             foregroundColor: .white,
+             foregroundColor: .cyan,
              backgroundColor: .orange),
     Category(title: "Health",
              sfImageName: "heart.fill",
-             foregroundColor: .white,
+             foregroundColor: .orange,
              backgroundColor: .red)
 ]
 
 struct ExploreScreen: View {
+    @Environment(GeneralCoordinator.self) var coordinator
     let columns = [
         GridItem(.adaptive(minimum: 160), spacing: 16)
     ]
@@ -44,12 +45,16 @@ struct ExploreScreen: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(mockList, id: \.id) { category in
-                        CategoryCard(
-                            categoryTitle: category.title,
-                            sfImageName: category.sfImageName,
-                            foregroundColor: category.foregroundColor,
-                            backgroundColor: category.backgroundColor
-                        )
+                        Button {
+                            coordinator.navigate(to: .contentList)
+                        } label: {
+                            CategoryCard(
+                                categoryTitle: category.title,
+                                sfImageName: category.sfImageName,
+                                foregroundColor: category.foregroundColor,
+                                backgroundColor: category.backgroundColor
+                            )
+                        }
                     }
                 }
                 .padding()
@@ -59,5 +64,6 @@ struct ExploreScreen: View {
 }
 
 #Preview {
-    ExploreScreen()
+    @Previewable var coordinator = GeneralCoordinator()
+    ExploreScreen().environment(coordinator)
 }

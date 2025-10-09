@@ -22,6 +22,7 @@ struct CategoryCard: View {
                     .foregroundStyle(Color.backgroundPrimary)
                     .overlay(
                         Image(systemName: sfImageName)
+                            .foregroundStyle(foregroundColor)
                     )
             }
             
@@ -30,6 +31,7 @@ struct CategoryCard: View {
             HStack {
                 Text(categoryTitle)
                     .font(.system(size: 22, weight: .bold))
+                    .foregroundStyle(foregroundColor)
                 Spacer()
             }
         }

@@ -17,6 +17,7 @@ struct ContentCard: View {
             HStack {
                 Text(text)
                     .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(.textPrimary)
                 Spacer()
                 Image("mockImage")
                     .resizable()
