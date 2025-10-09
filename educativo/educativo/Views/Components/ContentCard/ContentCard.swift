@@ -11,12 +11,13 @@ struct ContentCard: View {
     var text: String
     var createdAt: String
     var action: () -> Void
-    
+        
     var body: some View {
         VStack {
             HStack {
                 Text(text)
                     .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(.textPrimary)
                 Spacer()
                 Image("mockImage")
                     .resizable()
@@ -24,20 +25,23 @@ struct ContentCard: View {
             }
             
             Divider()
-            
+                .tint(Color.foregroundSecondary)
             HStack {
                 Text(createdAt)
                     .font(.system(size: 12, weight: .semibold))
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(Color.textSecondary)
                 Spacer()
+                
+                // TODO: Make this a button that receives the action
                 Image(systemName: "ellipsis")
+                    .foregroundStyle(Color.divider)
             }
             .padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
         }
         .padding()
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray, lineWidth: 1)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.divider, lineWidth: 1)
         )
 
     }
