@@ -19,7 +19,7 @@ struct CategoryCard: View {
                 Spacer()
                 Circle()
                     .frame(width: 40, height: 40)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.backgroundPrimary)
                     .overlay(
                         Image(systemName: sfImageName)
                     )
@@ -33,10 +33,10 @@ struct CategoryCard: View {
                 Spacer()
             }
         }
+        .frame(width: 150, height: 150)
         .padding()
-        .frame(width: 164, height: 164)
         .background(backgroundColor)
-        .cornerRadius(8)
+        .cornerRadius(16)
     }
 }
 

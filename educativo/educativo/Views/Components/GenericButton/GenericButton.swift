@@ -16,13 +16,13 @@ struct GenericButton: View {
         Button {
             action()
         } label: {
-            RoundedRectangle(cornerRadius: CGFloat(8))
+            RoundedRectangle(cornerRadius: CGFloat(16))
                 .foregroundStyle(backgroundColor)
                 .frame(height: 48)
                 .overlay(
                     Text(label)
                         .font(.system(size: 12, weight: .bold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.backgroundPrimary)
                 )
         }
         
