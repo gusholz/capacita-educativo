@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+enum NavbarRightButtonType {
+    case none
+    case ellipsis
+    case save
+}
+
 struct Navbar: View {
-    var has_custom_action: Bool = false
+    var rightButtonType: NavbarRightButtonType
     var dismissAction: () -> Void
-    var customAction: () -> Void = {}
     
     var body: some View {
         HStack {
@@ -21,13 +26,27 @@ struct Navbar: View {
                 }
             Spacer()
             
-            if has_custom_action {
+            switch rightButtonType {
+            case .none:
+                Color.clear
+            case .ellipsis:
                 Image(systemName: "ellipsis")
                     .font(.system(size: 30, weight: .regular))
                     .foregroundStyle(.secondary)
-                    .onTapGesture {
-                        customAction()
+                    .contextMenu {
+                        Button {
+                            print("Compartilhando Link!")
+                        } label: {
+                            Text("Compartilhar Link")
+                        }
+                        Button {
+                            print("Salvando publicação!")
+                        } label: {
+                            Text("Salvar Publicação")
+                        }
                     }
+            case .save:
+                Text("Salvar")
             }
         }
         .padding(.horizontal)
@@ -35,10 +54,7 @@ struct Navbar: View {
 }
 
 #Preview {
-    Navbar {
-        
-    } customAction: {
+    Navbar(rightButtonType: .none) {
         
     }
-
 }

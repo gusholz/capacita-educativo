@@ -35,6 +35,18 @@ struct ContentCard: View {
                 // TODO: Make this a button that receives the action
                 Image(systemName: "ellipsis")
                     .foregroundStyle(Color.divider)
+                    .contextMenu {
+                        Button {
+                            print("Compartilhando Link!")
+                        } label: {
+                            Text("Compartilhar Link")
+                        }
+                        Button {
+                            print("Salvando publicação!")
+                        } label: {
+                            Text("Salvar Publicação")
+                        }
+                    }
             }
             .padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
         }
