@@ -34,7 +34,6 @@ struct ContentListScreen: View {
                 .font(.system(size: 22, weight: .bold))
                 .padding(.vertical)
                 .padding(.leading)
-
             HStack {
                 Button {
                     activerFilter = .popular
