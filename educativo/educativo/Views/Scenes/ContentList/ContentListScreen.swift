@@ -99,7 +99,7 @@ struct ContentListScreen: View {
             }
 
         }
-        .background(Color(red: 248 / 255, green: 249 / 255, blue: 251 / 255))
+        .background(Color.backgroundPrimary)
     }
 }
 
