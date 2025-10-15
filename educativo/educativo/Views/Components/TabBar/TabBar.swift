@@ -41,29 +41,34 @@ struct TabBar: View {
     @Binding var selectedTab: PageTab
     
     var body: some View {
-        HStack(alignment: .lastTextBaseline) {
-            Spacer()
-            
-            TabBarItem(title: "Conteúdo", icon: "person.circle.fill", isSelected: selectedTab == .content )
-            .onTapGesture {
-                selectedTab = .content
+        VStack {
+            Divider()
+                .frame(height: 1)
+                .background(Color.divider)
+            HStack(alignment: .lastTextBaseline) {
+                Spacer()
+                
+                TabBarItem(title: "Conteúdo", icon: "graduationcap.fill", isSelected: selectedTab == .content )
+                    .onTapGesture {
+                        selectedTab = .content
+                    }
+                
+                Spacer()
+                
+                TabBarItem(title: "Explorar", icon: "magnifyingglass", isSelected: selectedTab == .explore )
+                    .onTapGesture {
+                        selectedTab = .explore
+                    }
+                
+                Spacer()
+                
+                TabBarItem(title: "Conta", icon: "person.fill", isSelected: selectedTab == .profile)
+                    .onTapGesture {
+                        selectedTab = .profile
+                    }
+                
+                Spacer()
             }
-            
-            Spacer()
-            
-            TabBarItem(title: "Explorar", icon: "magnifyingglass", isSelected: selectedTab == .explore )
-            .onTapGesture {
-                selectedTab = .explore
-            }
-            
-            Spacer()
-            
-            TabBarItem(title: "Conta", icon: "person.fill", isSelected: selectedTab == .profile)
-            .onTapGesture {
-                selectedTab = .profile
-            }
-            
-            Spacer()
         }
     }
 }
@@ -83,13 +88,9 @@ struct TabBarMenu: View {
             Group {
                 pages[selectedTab]
             }
-            .frame(maxWidth: .infinity)
             Spacer()
-            Divider()
-                .tint(Color.foregroundSecondary)
             TabBar(selectedTab: $selectedTab)
         }
-        .background(Color.backgroundSecondary)
     }
 }
 

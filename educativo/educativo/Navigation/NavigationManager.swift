@@ -13,6 +13,9 @@ protocol CoordinatorProtocol {
 
 enum Page: String, Identifiable {
     case main
+    case contentPage
+    case contentList
+
     
     var id: String {
         self.rawValue
@@ -23,6 +26,10 @@ enum Page: String, Identifiable {
         switch self {
         case .main:
             ContentView()
+        case .contentPage:
+            ContentPage(title: "Como passar esses dados?", text: "Vamo ver o que sai daqui")
+        case .contentList:
+            ContentListScreen()
         }
     }
 }
@@ -44,19 +51,19 @@ enum Sheets: String, Identifiable {
 }
 
 enum FullScreenCover: String, Identifiable {
-    case fullScreenCoverView
+    case contentList
     
     var id: String {
         self.rawValue
     }
     
-//    @ViewBuilder
-//    var view: some View {
-//        switch self {
-//        case .fullScreenCoverView:
-//            fullScreenCoverView()
-//        }
-//    }
+    @ViewBuilder
+    var view: some View {
+        switch self {
+        case .contentList:
+            ContentListScreen()
+        }
+    }
 }
 
 @Observable
@@ -74,9 +81,9 @@ class GeneralCoordinator {
 //    func build(sheet: Sheets) -> some View {
 //        return sheet.view
 //    }
-//    func build(fullScreenCover: FullScreenCover) -> some View {
-//        return fullScreenCover.view
-//    }
+    func build(fullScreenCover: FullScreenCover) -> some View {
+        return fullScreenCover.view
+    }
     
     func present(sheet: Sheets){
         self.sheet = sheet
